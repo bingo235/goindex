@@ -763,6 +763,7 @@ class googleDrive {
     let requestOption = await this.requestOption();
     let response = await fetch(url, requestOption);
     let obj = await response.json();
+    obj.files.map(result => {result.name = encodeURIComponent(result.name);return result});
     if (obj.files[0] == undefined) {
       return null;
     }
